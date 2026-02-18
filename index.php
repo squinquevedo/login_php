@@ -18,3 +18,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"])) {
         }
     }
 }
+
+if (isset($_GET["action"])&& $_GET["action"] =="logout") {
+    session_destroy();
+    header("Location: index.php");
+}
+
+if (isset($_SESSION["user"])) {
+    require_once "view/dashboard.php";
+} else {
+    require_once "view/login.php";
+}
+
+?>
